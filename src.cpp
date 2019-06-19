@@ -18,6 +18,7 @@ int main(){
         datapacket += (datacarrier += ";"); //adds datacarrier chunk to packet, appends lost ";"
         packetlength++;
         eofreached = hpglfile.eofbit;//check if we hit eof
+        usleep(25000);
         if ((packetlength >= 15 && eofreached == 0) || eofreached == 1){
             serialout << datapacket; //prints blocks of 15 instructions to plotter. also prints any remainders when eof is reached             
             datapacket.clear();      //clears out packet string
